@@ -17,13 +17,13 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserMapper userMapper;
 
-    @Cacheable("users")
+    @Cacheable(value = "UserCache")
     @Override
     public List<User> findAll() {
         return userMapper.findAll();
     }
 
-    @CacheEvict("users")
+    @CacheEvict(value = "UserCache",allEntries = true)
     @Override
     public void deleteOneById(long id) {
         userMapper.deleteOneById(id);
