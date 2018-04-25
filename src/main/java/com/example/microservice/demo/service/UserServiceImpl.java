@@ -25,6 +25,19 @@ public class UserServiceImpl implements IUserService {
 
     @CacheEvict(value = "UserCache",allEntries = true)
     @Override
+    public void saveOne(User user) {
+        userMapper.saveOne(user);
+    }
+
+    @CacheEvict(value = "UserCache",allEntries = true)
+    @Override
+    public void update(User user) {
+        userMapper.update(user);
+    }
+
+
+    @CacheEvict(value = "UserCache",allEntries = true)
+    @Override
     public void deleteOneById(long id) {
         userMapper.deleteOneById(id);
     }
